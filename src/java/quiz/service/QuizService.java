@@ -37,8 +37,17 @@ public class QuizService {
     public void supprimerQuiz(long quizId) {
         
         QuizDAO dao = new QuizDAO();
-        
+
         dao.supprimerQuizActu(quizId);
-//        dao.supprimerQuizQuestion(quizId);
+        
     }
+    
+    public void supprimerQuestion(long quizId) {
+        
+        QuizDAO dao = new QuizDAO();
+        
+        dao.supprimerQuizQuestion(quizId);
+        
+    }
+
 }

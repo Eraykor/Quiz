@@ -28,7 +28,9 @@
             
             <h1>score : ${score}</h1>
 
-            <h3>Question : ${quizQuestion.ordre}</h3>
+            <h3>Question : ${quizQuestion.ordre}/${nbTotalQuestion}</h3>
+            
+            <h3>${quizQuestion.titre}</h3>
             
             <h4>Réponse : </h4>
             

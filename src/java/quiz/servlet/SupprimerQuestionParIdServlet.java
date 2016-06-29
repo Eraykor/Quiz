@@ -12,25 +12,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import quiz.service.QuizService;
+import quiz.service.QuestionService;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "SupprimerQuizActuelServlet", urlPatterns = {"/supprimer_quiz_actuel"})
-public class SupprimerQuizActuelServlet extends HttpServlet {
+@WebServlet(name = "SupprimerQuestionParIdServlet", urlPatterns = {"/supprimer_by_id"})
+public class SupprimerQuestionParIdServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        long idQuiz = Long.parseLong(req.getParameter("quizId"));
+        long qId = Long.parseLong(req.getParameter("qId"));
         
-        QuizService service = new QuizService();
+        QuestionService questionService = new QuestionService();
         
-        service.supprimerQuestion(idQuiz);
-        service.supprimerQuiz(idQuiz);
+        questionService.supprimerQuestionParId(qId);
         
-        resp.sendRedirect("quiz_home");
+        resp.sendRedirect("liste_question");
     }
 }

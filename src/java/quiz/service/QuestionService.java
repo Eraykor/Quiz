@@ -41,4 +41,14 @@ public class QuestionService {
 //            return question;
 //        }
     }
+    
+    public void supprimerQuestionParId(long qId) {
+        
+        new QuestionDAO().supprimerParId(qId);
+    }
+    
+    public long nbTotalQuestion(long quizId) {
+        
+        return new QuestionDAO().CompteQuestionParQuizId(quizId);
+    }
 }

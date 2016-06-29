@@ -48,21 +48,25 @@ public class QuizDAO {
         
         em.getTransaction().begin();
         
-        Query query = em.createQuery("DELETE FROM Question q WHERE q.quiz.id=:idQuiz");
-        query.setParameter("idQuiz", quizId);
-        query.executeUpdate();
-        
         Query query1 = em.createQuery("DELETE FROM Quiz q WHERE q.id=:idQuiz");
         query1.setParameter("idQuiz", quizId);
         query1.executeUpdate();
         
         em.getTransaction().commit();
+        
     }
-//    
-//    public void supprimerQuizQuestion(long quizId) {
-//        
-//        EntityManager em = Persistence.createEntityManagerFactory("QuizPU").createEntityManager();
-//        
-//        
-//    }
+    
+    public void supprimerQuizQuestion(long quizId) {
+        
+        EntityManager em = Persistence.createEntityManagerFactory("QuizPU").createEntityManager();
+        
+        em.getTransaction().begin();
+        
+        Query query = em.createQuery("DELETE FROM Question q WHERE q.quiz.id=:idQuiz");
+        query.setParameter("idQuiz", quizId);
+        query.executeUpdate();
+
+        em.getTransaction().commit();
+
+    }
 }

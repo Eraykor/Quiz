@@ -28,29 +28,40 @@ public class JouerQuizServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        int score = (int) req.getSession().getAttribute("score");
-        
         QuestionService questionService = new QuestionService();
+        
+        // Récupération des différents informations (score du jouer, ordre de la question actuel, id du quiz et la réponse du joueur)
+        int score = (int) req.getSession().getAttribute("score");
         byte ordre = (byte) req.getSession().getAttribute("ordre");
         long idQuiz = (long) req.getSession().getAttribute("quizId");
         String reponse = req.getParameter("rep");
+        
+        req.setAttribute("nbTotalQuestion", questionService.nbTotalQuestion(idQuiz));
 
+        // appel au service rechercheQuestionOrdre pour lister les questions
         List<Question> question = questionService.rechercheQuestionOrdre(idQuiz, ordre);
 
+        // condition de comparaison de la réponse du joueur avec le bonne reponse que l'on va cherche en session
         if (reponse.equals(req.getSession().getAttribute("bonneRep").toString())) {
             score = score +1;
             req.getSession().setAttribute("score", score);
         }
         
+        // Si la List est vide on redirige le joueur
         if (question.isEmpty()) {
-
+//            throw new RuntimeException("Le quiz est vide!");
             resp.sendRedirect("score");
             
         } else {
+            // Sinon
+            
+            // Attribution de la premiere question de la List dans quizQuestion
             req.setAttribute("quizQuestion", question.get(0));
             
+            // initialise order qvec le nouvel ordre de la question suivante
             byte order = question.get(0).getOrdre();
 
+            // mise en session du nouvel ordre de la question
             req.getSession().setAttribute("ordre", order);
 
             req.getRequestDispatcher("jouer_quiz.jsp").forward(req, resp);

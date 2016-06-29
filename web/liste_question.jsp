@@ -49,6 +49,7 @@
                                 <td>${q.rep2}</td>
                                 <td>${q.rep3}</td>
                                 <td>${q.rep4}</td>
+                                <td><a href="supprimer_by_id?qId=${q.id}">Supprimer</a></td>
                             </tr>
                         </c:forEach>
 

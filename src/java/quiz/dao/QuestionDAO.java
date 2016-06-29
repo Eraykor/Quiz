@@ -45,4 +45,29 @@ public class QuestionDAO {
 
         return (List<Question>) query.getResultList();
     }
+    
+    public long CompteQuestionParQuizId(long id) {
+        
+        EntityManager em = Persistence.createEntityManagerFactory("QuizPU").createEntityManager();
+        
+        Query query = em.createQuery("SELECT COUNT(q) FROM Question q WHERE q.quiz.id=:monId");
+        query.setParameter("monId", id);
+        
+        return (long) query.getSingleResult();
+        
+    }
+    
+    public void supprimerParId(long qId) {
+        
+        EntityManager em = Persistence.createEntityManagerFactory("QuizPU").createEntityManager();
+        
+        em.getTransaction().begin();
+        
+        Query query = em.createQuery("DELETE FROM Question q WHERE q.id=:qId");
+        query.setParameter("qId", qId);
+        query.executeUpdate();
+        
+        em.getTransaction().commit();
+        
+    }
 }

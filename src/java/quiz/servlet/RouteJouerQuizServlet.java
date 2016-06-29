@@ -45,6 +45,7 @@ public class RouteJouerQuizServlet extends HttpServlet {
         List<Question> question = questionService.rechercheQuestionOrdre(quuizId, ordre);
         
         req.setAttribute("quizQuestion", question.get(0));
+        req.setAttribute("nbTotalQuestion", questionService.nbTotalQuestion(quuizId));
         
         byte order = question.get(0).getOrdre();
         

@@ -31,11 +31,11 @@
                     <c:forEach items="${quiz}" var="monQuiz">
                         <tr>
                             
-                            <td><a href="jouer_quiz?quizId=${monQuiz.id}" class="deco"><h3>${monQuiz.nom}</h3></a></td>
+                            <td><a href="jouer_quiz?quizId=${monQuiz.id}" class="deco"><h3>Jouer au ${monQuiz.nom}</h3></a></td>
                             
                             <c:if test="${login == 'admin'}">
-                                <td><a href="change_quiz_actuel?quizId=${monQuiz.id}" class="deco"><h6>Modifier</h6></a></td>
-                                <td><a href="supprimer_quiz_actuel?quizId=${monQuiz.id}" class="deco"><h6>Supprimer</h6></a></td>
+                                <td><a href="change_quiz_actuel?quizId=${monQuiz.id}" class="deco"><h4>Modifier</h4></a></td>
+                                <td><a href="supprimer_quiz_actuel?quizId=${monQuiz.id}" class="deco"><h4>Supprimer</h4></a></td>
                             </c:if>
                                 
                         </tr>
