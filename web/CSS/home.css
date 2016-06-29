@@ -8,6 +8,118 @@ and open the template in the editor.
     Author     : admin
 */
 
+body {
+    text-align: center;
+    font-family: sans-serif;
+    padding-bottom: 50px;
+}
+
+.menu_click:hover {
+    color: darkcyan;
+}
+
 li {
     display: inline-block;
+    font-size: 2em;
+    height: 100%;
+    margin-left: 50px;
+}
+
+li a {
+    text-decoration: none;
+}
+
+ul {
+    display: block;
+    margin: auto;
+    height: 100%;
+    padding-top: 5px;
+}
+
+.menu {
+    height: 50px;
+    margin-top: 20px;
+}
+
+.accueil {
+    margin-left: -70px;
+}
+
+.ban {
+    width: 30%;
+    display: block;
+    margin: auto;
+}
+
+.table_home {
+    width: 280px;
+    display: block;
+    margin: auto;
+}
+
+.table_home td:hover {
+    background-color: crimson;
+    cursor: pointer;
+    border: 1px solid chartreuse;
+}
+
+.table_home td a:hover {
+    color: white;
+}
+
+.deco {
+    text-decoration: none;
+}
+
+.table_admin {
+    width: 600px;
+    display: block;
+    margin: auto;
+}
+
+.table_admin td:hover {
+    background-color: darkblue;
+    color: white;
+}
+
+table td{
+    border: 1px solid black;
+    border-radius: 15px 15px 15px 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 150px;
+    padding: 10px;
+}
+
+.put {
+    display: inline-block;
+}
+
+table h6 {
+    margin-left: 10px;
+}
+
+.pied {
+   bottom: 0;
+   width: 99%;
+   text-align: center;
+}
+
+.cree_q {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2em;
+    border: 1px solid black;
+    padding: 10px;
+    line-height: 50px;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.cree_q:hover {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.quiz_title {
+    font-weight: 700;
 }

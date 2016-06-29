@@ -7,8 +7,6 @@ package quiz.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,12 +17,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author admin
  */
-@WebServlet(name = "QuizServlet", urlPatterns = {"/titre_quiz"})
-public class QuizServlet extends HttpServlet {
+@WebServlet(name = "LogoutControlServlet", urlPatterns = {"/logout"})
+public class LogoutControlServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        req.getRequestDispatcher("titre_quiz.jsp").forward(req, resp);
+        req.getSession().removeAttribute("login");
+        
+        resp.sendRedirect("quiz_home");
     }
 }

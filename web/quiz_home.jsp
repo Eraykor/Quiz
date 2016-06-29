@@ -24,7 +24,24 @@
         </div>
         
         <div class="contenu">
-            <p>crée un <a href="quiz_creation">Quiz</a></p>
+            <h1>Liste des Quiz jouable !</h1>
+            
+            <table class="table_home">
+                <tbody>
+                    <c:forEach items="${quiz}" var="monQuiz">
+                        <tr>
+                            
+                            <td><a href="jouer_quiz?quizId=${monQuiz.id}" class="deco"><h3>${monQuiz.nom}</h3></a></td>
+                            
+                            <c:if test="${login == 'admin'}">
+                                <td><a href="change_quiz_actuel?quizId=${monQuiz.id}" class="deco"><h6>Modifier</h6></a></td>
+                                <td><a href="supprimer_quiz_actuel?quizId=${monQuiz.id}" class="deco"><h6>Supprimer</h6></a></td>
+                            </c:if>
+                                
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
         </div>
         
         <div class="pied">

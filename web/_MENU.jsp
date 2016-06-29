@@ -8,6 +8,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <ul>
-    <li>Accueil</li>
-    <li>créer Quiz</li>
+    <li><a href="quiz_home" class="menu_click accueil">Accueil</a></li>
+    
+    <c:choose>
+        
+        <c:when test="${login==null}">
+            <li><a href="login" class="menu_click">Connection</a></li>
+        </c:when>
+            
+        <c:otherwise>
+            <li><a href="titre_quiz" class="menu_click">Créer Quiz</a></li>
+            
+            <li><a href="logout" class="menu_click">Déconnection</a></li>
+        </c:otherwise>
+            
+    </c:choose>
 </ul>

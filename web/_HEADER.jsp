@@ -6,4 +6,4 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<h1>QUIZ</h1>
+<img src="http://www.quizz.tv/images/logo.png" alt="banniere_quiz" class="ban" />

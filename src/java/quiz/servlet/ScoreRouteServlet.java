@@ -7,8 +7,6 @@ package quiz.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,12 +17,17 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author admin
  */
-@WebServlet(name = "QuizServlet", urlPatterns = {"/titre_quiz"})
-public class QuizServlet extends HttpServlet {
+@WebServlet(name = "ScoreRouteServlet", urlPatterns = {"/score"})
+public class ScoreRouteServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        req.setAttribute("score", req.getSession().getAttribute("score"));
         
-        req.getRequestDispatcher("titre_quiz.jsp").forward(req, resp);
+        req.removeAttribute("score");
+        req.removeAttribute("ordre");
+        
+        req.getRequestDispatcher("score.jsp").forward(req, resp);
     }
 }

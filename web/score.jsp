@@ -1,6 +1,6 @@
 <%-- 
-    Document   : quiz_creation
-    Created on : 24 juin 2016, 14:39:49
+    Document   : score
+    Created on : 28 juin 2016, 16:22:19
     Author     : admin
 --%>
 
@@ -11,9 +11,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <c:import url="_STYLESHEET.jsp" />
     </head>
     <body>
-   
+
         <div class="header">
             <c:import url="_HEADER.jsp" />
         </div>
@@ -23,12 +24,11 @@
         </div>
         
         <div class="contenu">
-            <p>crée un <a href="quiz_creation">Quiz</a></p>
+            <h1>Votre score Final est de : ${score}</h1>
         </div>
         
         <div class="pied">
-            <c:import url="_PIED" />
+            <c:import url="_PIED.jsp" />
         </div>
-
     </body>
 </html>

@@ -7,24 +7,33 @@ package quiz.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import quiz.service.QuizService;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "QuizServlet", urlPatterns = {"/titre_quiz"})
-public class QuizServlet extends HttpServlet {
+@WebServlet(name = "SupprimerQuizActuelServlet", urlPatterns = {"/supprimer_quiz_actuel"})
+public class SupprimerQuizActuelServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        req.getRequestDispatcher("titre_quiz.jsp").forward(req, resp);
+        req.getRequestDispatcher("quiz_home.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        long idQuiz = Long.parseLong(req.getParameter("quizId"));
+        
+        new QuizService().supprimerQuiz(idQuiz);
+        
+        resp.sendRedirect("quiz_home");
     }
 }
