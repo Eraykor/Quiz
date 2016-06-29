@@ -34,8 +34,10 @@ public class AjouterQuizServlet extends HttpServlet {
         QuizService quizService = new QuizService();
         Quiz q = new Quiz();
         
+        // va chercher l'entrée utilisateur dans l'input titre
         String titre = req.getParameter("titre");
         
+        // sauvegarde dans la bd le titre
         q.setNom(titre);
         quizService.ajouter(q);
         

@@ -25,6 +25,8 @@ import quiz.service.QuizService;
 @WebServlet(name = "RouteJouerQuizServlet", urlPatterns = {"/jouer_quiz"})
 public class RouteJouerQuizServlet extends HttpServlet {
     
+    // Servlet qui genere la premiere question et initialize les session lors du premier appel de la page jouer_quiz.jsp
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
@@ -42,18 +44,20 @@ public class RouteJouerQuizServlet extends HttpServlet {
         req.getSession().setAttribute("quizId", q.getId());
         req.getSession().setAttribute("quizNom", q.getNom());
         
+        // appel au service rechercheQuestionOrdre pour lister les questions
         List<Question> question = questionService.rechercheQuestionOrdre(quuizId, ordre);
         
+        // met en attribut la premiere question de la List récupéré + le nombre totql de question du quizz actuel
         req.setAttribute("quizQuestion", question.get(0));
         req.setAttribute("nbTotalQuestion", questionService.nbTotalQuestion(quuizId));
         
         byte order = question.get(0).getOrdre();
         
+        
+        // met en session le score, l'ordre et le numéro e réponse correcte pour la question actuelle
         req.getSession().setAttribute("score", score);
         req.getSession().setAttribute("ordre", order);
         req.getSession().setAttribute("bonneRep", question.get(0).getNumRepCorrect());
-        
-        System.out.println(order);
         
         req.getRequestDispatcher("jouer_quiz.jsp").forward(req, resp);
     }
